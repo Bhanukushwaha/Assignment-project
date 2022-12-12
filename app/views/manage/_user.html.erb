@@ -1,0 +1,93 @@
+<!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div class="card px-4 py-5 px-md-5 text-center text-lg-start" style="margin-top: 10px; background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-3 mb-5 mb-lg-0">
+          </div>
+            <div class="col-lg-8 "> 
+              <div class="card">
+                <div class="card-body  px-md-5"> 
+                  <p style="text-align: center;">Manages show</p>
+                  <hr class="my-2">
+                   <p id="notice"><%= notice %></p>              
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">First Name:</strong>
+                    <%= @user.first_name %>
+                  </fieldset>  
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Last Name:</strong>
+                    <%= @user.last_name %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Email:</strong>
+                    <%= @user.email %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Company:</strong>
+                    <%= @user&.company&.name  %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Role:</strong>
+                    <%= @user&.role&.name %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Monthly_charge:</strong>
+                    <%= @user.monthly_charge %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Start date:</strong>
+                    <%= @user.start_date %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">End_date:</strong>
+                    <%= @user.end_date %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Nodes:</strong>
+                    <%= raw @user.notes %>
+                  </fieldset>           
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Image:</strong>
+                    <% if @user.profiles.present? %>
+                      <%= image_tag @user.profiles.last.image.url, height: "150", width: "100" rescue nil %>
+                     <% end %>
+                  </fieldset>     
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Active :</strong>
+                    <%= @user.active %>
+                  </fieldset>                     
+                  <div class="row gx-lg-5 gy-2 px-4" >
+                    <div class="col-sm-3">                      
+                      <%= link_to "Back", manage_index_path,class: "btn btn-outline-info btn-sm" %>
+ 
+                    </div>
+                    <div class="col-sm-3">
+                      <%= link_to "Edit",edit_manage_url(@user),class: "btn btn-outline-success btn-sm "%>
+                    </div>
+                    <div class="col-sm-2 "> 
+                    <%= button_to "Destroy user", @manage, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                    </div>  
+                  </div>           
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+

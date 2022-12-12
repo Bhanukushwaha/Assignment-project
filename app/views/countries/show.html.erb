@@ -1,0 +1,41 @@
+
+
+
+<!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div class="card px-4 py-5 px-md-5 text-center text-lg-start" style="margin-top: 10px; background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-1 mb-5 mb-lg-0">
+          </div>
+            <div class="col-lg-10 mb-5 mb-lg-0">
+              <div class="card">
+                <div class="card-body py-5 px-md-5">              
+              
+                  <fieldset class="row mb-3   mx-md-8 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Name:</strong>
+                    <%= @country.name %>
+                  </fieldset>                     
+                  <div class="row gx-3 gy-2 align-items-center" style="margin-top: 30px;">
+                    <div class="col-sm-4">
+                      <%= link_to 'Back', countries_path, class: "btn btn-outline-secondary btn-sm col-sm-8" %>
+                    </div>
+                    <div class="col-sm-4">
+                      <%= link_to 'Edit', edit_country_path(@country), class: "btn btn-outline-success btn-sm col-sm-8" %>
+                    </div>
+                    <div class="col-sm-4 m">                  
+                    <%= button_to 'Destroy', @country, method: :delete,  class: "btn btn-outline-danger btn-sm col-sm-8" %> 
+                    </div>  
+                  </div>           
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+

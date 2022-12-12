@@ -1,0 +1,66 @@
+<%= form_with(model: company, local: true) do |form| %> 
+<% if company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+      <ul>
+        <% company.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for="inputAddress2">UserName</label>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter your Company Name" %>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Country</label>
+      <%= form.select :country_id, Country.all.map{ |c| [c.name, c.id]},{:prompt => "--select Country--"},class: "form-control" %>
+
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault02">State</label>
+      <div id="states_based_country">    
+        <%= form.select :state_id, State.all.map{ |c| [c.name, c.id]},{:prompt => "--select Country--"}, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault03">City</label>
+      <div id="cities_based_state">
+        <%= form.select :city_id, City.all.map{ |c| [c.name, c.id]},{:prompt => "--select Country--"}, class: "form-control" %>
+      </div>    
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault03">Postcode</label>      
+      <%= form.text_field :postcode,placeholder: "your company postcode", class: "form-control"  %>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault04">StartDate</label>      
+      <%= form.date_field :start_date ,class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">Active  
+    <%= form.check_box :active ,class: "form-check-label"%>     
+    </div>
+  </div>
+  <div class="row">
+  <button class="btn btn-outline-success" type="submit">Submit form</button>
+  </div>
+  <br>
+<% end %>
+<script type="text/javascript">
+  $('#company_country_id').change(function() {
+    var country_id = $('#company_country_id').val();
+    $.ajax({
+      url: "/get_states_based_country",
+      type: "GET",
+      data: $.param({ country_id: country_id })
+    })
+  });
+</script>

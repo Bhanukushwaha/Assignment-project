@@ -1,0 +1,68 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+
+<table id="myTable">
+  <thead>
+    <tr class="header">
+      <th>No</th>
+      <th style="width:35%;">Name</th>
+      <th style="width:25%;" colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roles.each_with_index do |role,sindex| %>
+      <tr>
+        <td><%= sindex+1 %></td>
+        <td><%= role.name %></td>
+        <td><%= link_to 'Show', role,class: "btn btn-outline-warning btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_role_path(role),class: "btn btn-outline-success btn-sm" %></td>
+        <td><%= button_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-outline-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Role', new_role_path,class: "btn btn-outline-primary btn-sm" %>
+
+
+
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 70%;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px 20px 8px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 14px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 7px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>

@@ -1,0 +1,96 @@
+<% if @user.id.present?%>
+  <% path = "/manage/#{@user.id}"%>
+<% else %>
+  <% path=  manage_index_path %>  
+<% end %>
+
+<%= form_for( @user, url: path ) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= form.label :first_name %><br>
+      <%= form.text_field :first_name, class: "form-control", placeholder: "Enter your first_name" %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :last_name %><br>
+      <%= form.text_field :last_name, class: "form-control", placeholder: "Enter your last_name" %>
+    </div>
+
+    <div class="col-md-4">
+    <%= form.label :email %><br>
+    <%= form.text_field :email,class: "form-control",placeholder: "Enter your email" %>
+    </div><br><br><br>
+
+    <div class="col-md-6">
+    <%= form.label :company_id %>
+    <%= form.select :company_id, Company.all.map { |c| [c.name, c.id] },{:prompt => "--select Company--"},class: "form-control" %>
+    </div>
+
+    <div class="col-md-6">
+    <%= form.label :role_id %>
+    <%= form.select :role_id, Role.all.map { |c| [c.name, c.id] },{:prompt => "--select role--"},class: "form-control" %>
+    </div><br><br><br>
+
+    <div class="col-md-4">
+    <%= form.label :Monthlycharge %><br>
+    <%= form.number_field :monthly_charge ,class: "form-control", placeholder: "Enter your Monthlycharge" %>
+    </div>
+
+    <div class="col-md-4">
+    <%= form.label :start_date %><br>
+    <%= form.date_field :start_date,class: "form-control" %>
+    </div>
+
+    <div class="col-md-4">
+    <%= form.label :end_date %><br>
+    <%= form.date_field :end_date ,class: "form-control"%>
+    </div><br><br><br>
+
+    <div class="col-md-4">
+    <%= form.label :image %>
+    <%= form.file_field :image,:onchange => "showimagepreview(this)",:class=>"img_file"  %><br>
+     <img id="imgprvw" style="width: 200px; height: 94px; " />
+    </div>
+
+
+    <div class="col-md-4">
+    <%= form.label :notes %><br>
+    <%= form.text_area :notes, ckeditor: { toolbar: 'full'} ,class: "form-control"%>
+    </div>
+
+    <div class="col-md-4">
+    <%= form.label :active %><br>
+    <%= form.check_box :active %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <%= form.submit class: "btn btn-outline-success"%>
+  </div>
+<% end %>
+<br>
+
+
+<script>
+  function showimagepreview(input) {
+    if (input.files && input.files[0]) {
+    var filerdr = new FileReader();
+    filerdr.onload = function(e) {
+    $('#imgprvw').attr('src', e.target.result);
+    }
+    filerdr.readAsDataURL(input.files[0]);
+    }
+    $('.image_upload').submit();
+  }
+</script>
+

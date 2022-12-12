@@ -1,0 +1,7 @@
+<h1 style="text-align: center;">Editing COMPANY</h1>
+
+<%= render 'form', company: @company %>
+
+<%= link_to 'Show', @company, class: "btn btn-outline-warning btn-block" %><br><br> 
+<td><%= button_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-outline-danger btn-block" %></td><br>
+<%= link_to 'Back', companies_path, class: "btn btn btn-outline-dark btn-block" %>

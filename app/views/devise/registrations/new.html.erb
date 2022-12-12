@@ -1,0 +1,119 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-10">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 7px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Registration Form / sign Up</h3>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="row">
+                <div class="col-md-4 mb-4">                                      
+                  <label class="form-label" for="firstName">First Name</label>
+                  <%= f.text_field :first_name, class: "form-control",placeholder: "Enter your First_name" %>
+                </div>
+                <div class="col-md-4 mb-4">                                     
+                    <label class="form-label" for="lastName">Last Name</label>
+                    <%= f.text_field :last_name, id: "lastName",class: "form-control" ,placeholder: "Enter your Last_name" %>                  
+                </div>
+
+                <div class="col-md-4 mb-4">                                     
+                    <label class="form-label" for="typeEmailX-2">Email</label>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control", placeholder: "Enter your First_name" %>              
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">                                    
+                  <label class="form-label" for="typePasswordX">Password</label>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control",placeholder: "Enter your password" %>   
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">                                   
+                  <label class="form-label" for="typePasswordX">password</label>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control",placeholder: "Enter your password_confirmation " %>                 
+                </div>
+              </div>
+              <div class="row">                
+                <div class="col-md-4 mb-4">                                    
+                  <label for="company" class="form-label">Company</label>
+                  <%= f.select :company_id, Company.all.map{ |c| [c.name, c.id ]}, {:prompt => '-- Please Select Company --'} ,class: "form-control" %>                  
+                </div> 
+                <div class="col-md-4 mb-4">                     
+                  <label class="form-label" for="role">Role</label>
+                  <%= f.select :role_id, Role.all.map{ |r| [r.name, r.id ]}, {:prompt => '-- Please Select Role --'} ,class: "form-control" %>
+                </div> 
+
+                <div class="col-md-4 mb-4">                      
+                  <label class="form-label" for="monthly_charge">Monthly_charge</label>      
+                  <%= f.number_field :monthly_charge , class: "form-control" ,placeholder: "Enter your monthly_charge"%>      
+                </div>              
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 mb-4 pb-2">                                   
+                    <label class="form-label" for="startdate">StartDate</label>
+                    <%= f.date_field :start_date, class: "form-control" %>
+                </div>
+
+                <div class="col-md-4 mb-4 pb-2">
+                  <div class="form-outline">                    
+                    <label class="form-label" for="end_date">End Date</label>
+                    <%= f.date_field :end_date,class: "form-control" %>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-4 pb-2">                                    
+                  <label class="form-label" for="notice">Notice</label>
+                  <%= f.text_area :notes, ckeditor: { toolbar: 'full'}, class: "form-control", placeholder: "Enter your notice"%>
+                </div>       
+              </div>
+                <div class="form-group">
+                  <div class="form-check">
+                    <%= f.check_box :active, class: "form-check-input" %>
+                    <label class="form-check-label" for="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">                  
+                  <%= link_to "Log in", new_session_path(resource_name),class: "btn btn-outline-primary btn-lg btn-block" %> 
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2"> 
+                  <%= f.submit "Sign up", class: "btn btn-outline-success btn-lg btn-block" %>                
+                </div>     
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style type="text/css">
+  .gradient-custom {
+/* fallback for old browsers */
+background: #cccccc;
+
+}
+/*
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}*/
+</style>

@@ -1,0 +1,45 @@
+<!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div class="card px-4 py-5 px-md-5 text-center text-lg-start" style="margin-top: 10px; background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-3 mb-5 mb-lg-0">
+          </div>
+            <div class="col-lg-5 "> 
+              <div class="card">
+                <div class="card-body  px-md-5"> 
+                  <p style="text-align: center;">States show</p>
+                  <hr class="my-2">
+                   <p id="notice"><%= notice %></p>              
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Name:</strong>
+                    <%= @state.name %>
+                  </fieldset>  
+
+                  <fieldset class="row mb-3   mx-md-2 shadow-8-strong">                  
+                    <strong class="col-form-label col-sm-6 pt-0">Country:</strong>
+                    <%= @state&.country&.name %>
+                  </fieldset>                     
+                  <div class="row gx-lg-5 gy-2 px-4" >
+                    <div class="col-sm-3">
+                      <%= link_to 'Back', states_path,class: "btn btn-outline-secondary btn-sm "%>
+                    </div>
+                    <div class="col-sm-3">
+                      <%= link_to 'Edit', edit_state_path(@state), class: "btn btn-outline-success btn-sm " %>
+                    </div>
+                    <div class="col-sm-2 "> 
+                    <%= button_to 'Destroy', @state, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-outline-danger btn-sm " %>
+                    </div>  
+                  </div>           
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+
