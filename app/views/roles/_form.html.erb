@@ -8,8 +8,9 @@
     <div class="container">
       <div class="row gx-lg-5 align-items-center">
         <div class="col-lg-1 mb-5 mb-lg-0">
-          </div>
-            <div class="col-lg-11 mb-5 mb-lg-0"> 
+          </div>          
+            <div class="col-lg-11 mb-5 mb-lg-0">
+            <p>New Role</p> 
               <%= form_with(model: role, local: true) do |form| %>
                 <% if role.errors.any? %>
                   <div id="error_explanation">
@@ -25,7 +26,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <label for="inputname6">Name :</label>                  
-                  <%= form.text_field :name, id: "inputPassword6", class: "form-control mx-sm-3",placeholder: "Enter your Company Name" %> 
+                  <%= form.text_field :name, id: "inputPassword6", class: "form-control mx-sm-3",placeholder: "Enter your role Name" %> 
                 </div>
                   <div>                    
                     <%= form.submit  :class=> "btn btn-outline-secondary mb-2 px-md-5" %>
