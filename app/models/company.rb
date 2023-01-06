@@ -5,3 +5,4 @@ class Company < ApplicationRecord
 	has_many :places
 	has_many :user
 end
+	

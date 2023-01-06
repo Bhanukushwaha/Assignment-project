@@ -1,5 +1,5 @@
 
-<p style="color: green"><%= notice %></p>
+<!-- <p style="color: green"><%= notice %></p> -->
 
 <body>
 <table id="myTable">
@@ -28,10 +28,19 @@
         <td><%= user.start_date %></td>
         <td><%= user.end_date %></td>        
         <td><%= user.notes %></td>
-        <td><%= user.active %></td>        
-        <td><%= link_to "Show",  manage_path(user), class: "btn btn-warning btn-sm"%></td>
-        <td><%= link_to "Edit",  edit_manage_url(user),class: "btn btn-success btn-sm" %></td>
-        <td><%= button_to 'Destroy', manage_path(user), method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
+        <td><%= user.active %></td> 
+        <td>
+          <div class="dropdown">
+          <button class="btn btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><%= link_to "Show",  manage_path(user), class: "dropdown-item"%></li>
+            <li><%= link_to "Edit",  edit_manage_url(user),class: "dropdown-item"%></li>
+            <li><%= button_to 'Destroy', manage_path(user), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %></li>
+          </ul>
+        </div> 
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -44,22 +53,45 @@
 
 
 
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
 
 
 <style>
 * {
   box-sizing: border-box;
 }
+
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 70%;
   border-radius: 10px;
-  font-size: 16px;
-  padding: 12px 20px 8px 40px;
+  font-size: 12px;
+  padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
-  margin-bottom: 14px;
+  margin-bottom: 6px;
 }
 
 #myTable {
@@ -71,7 +103,7 @@
 
 #myTable th, #myTable td {
   text-align: left;
-  padding: 7px;
+  padding: 4px;
 }
 
 #myTable tr {
@@ -82,3 +114,5 @@
   background-color: #f1f1f1;
 }
 </style>
+
+
